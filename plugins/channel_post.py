@@ -7,7 +7,7 @@ from pyrogram.errors import FloodWait
 # from bot import Bot
 from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
-from start import verify_user
+from plugins.start import verify_user
 
 @Client.on_message(filters.private & (filters.document | filters.video | filters.audio) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
