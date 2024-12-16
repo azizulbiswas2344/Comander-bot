@@ -92,6 +92,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ]
             )
         )
+    
     elif data.startswith("generate_stream_link"):
         # _, fileid = data.split(":")
         print("hit generate_stream_link callback")
@@ -144,6 +145,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             print(e)  # print the error message
             await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
             return 
+    
     elif data.startswith("get_embed_code"):
         # _, fileid, = data.split(":")
         # print('Hit me 1')

@@ -13,7 +13,7 @@ neha_delete_time = FILE_AUTO_DELETE
 neha = neha_delete_time
 file_auto_delete = humanize.naturaldelta(neha)
 
-@Client.on_message(filters.command('start') & filters.private & subscribed)
+@Client.on_message(filters.command('start') & filters.private)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     if not await present_user(id):
@@ -98,11 +98,11 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('⚡️ ᴍᴏᴠɪᴇs', url='https://t.me/+oVTtnTXMGJNlY2Vl'),
-                    InlineKeyboardButton('🍁 sᴇʀɪᴇs', url='https://telegram.me/real_MoviesAdda6')
+                    InlineKeyboardButton('⚡️ ᴍᴏᴠɪᴇs', url='https://telegram.me/A3IOTV'),
+                    InlineKeyboardButton('🍁 sᴇʀɪᴇs', url='https://telegram.me/A3IOTV')
                 ],
                 [
-                    InlineKeyboardButton('🍿.  ᴀɴɪᴍᴇ  .🚀', url='https://telegram.me/+oVTtnTXMGJNlY2Vl')
+                    InlineKeyboardButton('🍿.  ᴀɴɪᴍᴇ  .🚀', url='https://telegram.me/A3IOTV')
                 ]
             ]
         )
