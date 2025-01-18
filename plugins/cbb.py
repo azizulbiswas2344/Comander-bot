@@ -115,7 +115,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}&lazydev={lazydev_id}"
             lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
 
-            
             await asyncio.sleep(1)
             await xo.delete()
 
@@ -162,7 +161,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             # print(f'Hit me 1 {fileName}')
             
             # Generate the embed URL
-            lazy_embed = f"{URL}embed/{str(log_msg.id)}?hash={get_hash(log_msg)}&lazydev={lazydev_id}"
+            lazy_embed = f"{URL}embed/{str(log_msg.id)}?hash={get_hash(log_msg)}"
             print(f'Hit me 1 = {lazy_embed}')
             # Create the HTML embed code
             embed_code = f"""

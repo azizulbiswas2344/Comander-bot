@@ -14,9 +14,9 @@ async def channel_post(client: Client, message: Message):
     user_id = message.from_user.id
     if not await verify_user(user_id):
         return await message.reply("⛔ You are not authorized to use this bot.")
-    
+
     reply_text = await message.reply_text("Please Wait...!", quote = True)
-    
+
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
     except FloodWait as e:
@@ -42,13 +42,12 @@ async def channel_post(client: Client, message: Message):
 
     await reply_text.edit(f"<b>📂Telegram File Link:</b>\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
 
-
 @Client.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID))
 async def new_post(client: Client, message: Message):
 
     if DISABLE_CHANNEL_BUTTON:
         return
-
+    
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
     base64_string = await encode(string)

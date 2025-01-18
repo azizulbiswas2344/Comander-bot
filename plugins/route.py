@@ -21,10 +21,9 @@ from server.exceptions import FIleNotFound, InvalidHash
 from zzint import StartTime, __version__
 from util.custom_dl import ByteStreamer
 from util.time_format import get_readable_time
-from util.render_template import render_page
+from util.render_template import render_page, render_embed
 from config import *
 from util.file_properties import get_file_ids
-
 
 routes = web.RouteTableDef()
 
@@ -83,13 +82,8 @@ async def embed_handler(request: web.Request):
         else:
             id = int(re.search(r"(\d+)(?:\/\S+)?", path).group(1))
             secure_hash = request.rel_url.query.get("hash")
-        
-        lazydev_id = request.rel_url.query.get("lazydev")
-        print("lazydev_id => lazydev_id")
-        if not lazydev_id:
-            return web.Response(text="Lazydev_ID is missing!", status=400)        
 
-        return web.Response(text=await render_page(id, secure_hash,lazydev_id, page_type="embed"), content_type='text/html')
+        return web.Response(text=await render_embed(id, secure_hash, page_type="embed"), content_type='text/html')
     except InvalidHash as e:
         raise web.HTTPForbidden(text=e.message)
     except FIleNotFound as e:
